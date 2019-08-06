@@ -1,10 +1,10 @@
 
 module.exports = {
-  database: {
-    db: "quake",
-    host: process.env.RDB_HOST || "localhost",
-    port: process.env.RDB_PORT || 28015
-  },
+    database: {
+        db: "quake",
+        host: process.env.RDB_HOST || "localhost",
+        port: process.env.RDB_PORT || 32769
+    },
 
-  port: 8090
-}
+    port: 8090
+};
