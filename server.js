@@ -3,8 +3,8 @@ const express = require("express");
 const bluebird = require("bluebird");
 const config = require("./config");
 
-const app = express();
-app.use(express.static(__dirname + "/public"));
+const server = express();
+server.use(express.static(__dirname + "/public"));
 
 const feedUrl = "earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_month.geojson";
 
@@ -74,7 +74,7 @@ setInterval(function () {
 // Define the `/quakes` endpoint for the backend API. It queries
 // the database and retrieves the earthquakes ordered by magnitude
 // and then returns the output as a JSON array
-app.get("/quakes", function (req, res) {
+server.get("/quakes", function (req, res) {
     let conn;
     r.connect(config.database).then(function (c) {
         conn = c;
@@ -102,7 +102,7 @@ app.get("/quakes", function (req, res) {
 // two URL query parameters, representing the latitude and longitude
 // of a point. It will query the `quakes` table to find the closest
 // earthquake, which is returned as a JSON object
-app.get("/nearest", function (req, res) {
+server.get("/nearest", function (req, res) {
     const latitude = req.param("latitude");
     const longitude = req.param("longitude");
 
@@ -132,5 +132,5 @@ app.get("/nearest", function (req, res) {
         });
 });
 
-app.listen(config.port);
+server.listen(config.port);
 console.log("Server started on port", config.port);
