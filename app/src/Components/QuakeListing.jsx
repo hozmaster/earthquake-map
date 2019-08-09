@@ -4,10 +4,10 @@
 
 import React from 'react';
 
-const QuakeListing = ({ quakes }) => (
-    return  <ul>
+const QuakeListing = ({ quakes }) => {
+    return <ul>
         {quakes.map(quake => <li key={quake.id}>{quake.title}</li>)}
     </ul>
-);
+};
 
 export default QuakeListing;

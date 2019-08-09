@@ -4,12 +4,12 @@
 
 import React,{ Component } from 'react';
 
-import './QuekeListing'
+import QuakeListing from "./QuakeListing";
 
 class Quakes extends Component {
     constructor(props) {
         super(props);
-        this.state = {books: []};
+        this.state = {quakes: []};
     }
     componentDidMount() {
         fetch('http://localhost:8090/quakes')
@@ -17,7 +17,7 @@ class Quakes extends Component {
             .then((data) => { this.setState({ books: data }) });
     }
     render() {
-        return <QuakeListing books={this.state.quakes} />;
+        return < QuakeListing quakes={this.state.quakes} />;
     }
 }
 

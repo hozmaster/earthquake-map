@@ -1,8 +1,8 @@
-import React from 'react';
-import logo from './logo.svg';
+
+import React, {Component} from 'react';
 import './App.css';
 
-import './Components/Quakes'
+import Quakes from "./Components/Quakes";
 
 function App() {
   return (
