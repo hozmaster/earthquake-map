@@ -1,18 +1,18 @@
-var r = require("rethinkdb");
-var express = require("express");
-var bluebird = require("bluebird");
-var config = require("./config");
+const r = require("rethinkdb");
+const express = require("express");
+const bluebird = require("bluebird");
+const config = require("./config");
 
-var app = express();
+const app = express();
 app.use(express.static(__dirname + "/public"));
 
-var feedUrl = "earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_month.geojson";
+const feedUrl = "earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_month.geojson";
 
 // Fetch data from the USGS earthquake feed and transform all
 // the locations into point objects. Insert the data into the
 // `quakes` table. This query is assigned to a variable so it
 // can easily be reused in two different parts of the program.
-var refresh =
+const refresh =
     r.table("quakes").insert(
         r.http(feedUrl)("features").merge(function (item) {
             return {
@@ -23,9 +23,9 @@ var refresh =
         }), {conflict: "replace"});
 
 // Perform initial setup, creating the database and table
-// It also creates a geospatial index on the `geometry` proeprty
+// It also creates a geospatial index on the `geometry` property
 // and performs the query above in order to populate the data
-var conn;
+let conn;
 r.connect(config.database).then(function (c) {
     conn = c;
     return r.dbCreate(config.database.db).run(conn);
@@ -53,7 +53,7 @@ r.connect(config.database).then(function (c) {
 // earthquake database with new data at 30 minute intervals and
 // delete the records that are older than 30 days
 setInterval(function () {
-    var conn;
+    let conn;
     r.connect(config.database).then(function (c) {
         conn = c;
 
@@ -75,7 +75,7 @@ setInterval(function () {
 // the database and retrieves the earthquakes ordered by magnitude
 // and then returns the output as a JSON array
 app.get("/quakes", function (req, res) {
-    var conn;
+    let conn;
     r.connect(config.database).then(function (c) {
         conn = c;
 
@@ -103,13 +103,14 @@ app.get("/quakes", function (req, res) {
 // of a point. It will query the `quakes` table to find the closest
 // earthquake, which is returned as a JSON object
 app.get("/nearest", function (req, res) {
-    var latitude = req.param("latitude");
-    var longitude = req.param("longitude");
+    const latitude = req.param("latitude");
+    const longitude = req.param("longitude");
 
+    console.log (latitude);
     if (!latitude || !longitude)
         return res.status(500).json({err: "Invalid Point"});
 
-    var conn;
+    let conn;
 
     r.connect(config.database).then(function (c) {
         conn = c;
