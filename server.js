@@ -1,10 +1,13 @@
 const r = require("rethinkdb");
 const express = require("express");
 const bluebird = require("bluebird");
+const cors = require("cors");
 const config = require("./config");
 
 const server = express();
-server.use(express.static(__dirname + "/public"));
+server.use (cors);
+
+// server.use(express.static(__dirname + "/public"));
 
 const feedUrl = "earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_month.geojson";
 
@@ -81,7 +84,7 @@ server.get("/quakes", function (req, res) {
 
         return r.table("quakes").orderBy(
             r.desc(r.row("properties")("mag"))).run(conn);
-    })
+        })
         .then(function (cursor) {
             return cursor.toArray();
         })

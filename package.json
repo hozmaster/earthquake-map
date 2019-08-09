@@ -19,6 +19,7 @@
     "homepage": "https://github.com/rethinkdb/earthquake-map",
     "dependencies": {
         "bluebird": "^2.3.2",
+        "cors": "^2.8.5",
         "express": "^4.9.0",
         "rethinkdb": "^1.14.0-0"
     }
