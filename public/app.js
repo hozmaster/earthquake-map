@@ -3,6 +3,7 @@ var app = angular.module("quakes", []);
 app.controller("MainController", [
     "$rootScope", "$scope", "$http",
     function ($rootScope, $scope, $http) {
+    
 
         // When the user's location changes, remove any existing user
         // markers and create a new one at the user's coordinates
@@ -20,6 +21,8 @@ app.controller("MainController", [
             $scope.map.addLayer($scope.userMarker);
         });
 
+        //
+        
         // When earthquakes are added or removed from the filtered array
         // Add or remove the corresponding markers so that the map is
         // consistent with the earthquake list
