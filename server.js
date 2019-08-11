@@ -5,7 +5,7 @@ const cors = require("cors");
 const config = require("./config");
 
 const server = express();
-server.use (cors);
+// server.use (cors);
 
 // server.use(express.static(__dirname + "/public"));
 
@@ -78,6 +78,8 @@ setInterval(function () {
 // the database and retrieves the earthquakes ordered by magnitude
 // and then returns the output as a JSON array
 server.get("/quakes", function (req, res) {
+    console.log ("conencted");
+
     let conn;
     r.connect(config.database).then(function (c) {
         conn = c;
@@ -89,6 +91,7 @@ server.get("/quakes", function (req, res) {
             return cursor.toArray();
         })
         .then(function (result) {
+            console.log(result);
             res.json(result);
         })
         .error(function (err) {
@@ -99,6 +102,10 @@ server.get("/quakes", function (req, res) {
             if (conn)
                 conn.close();
         });
+});
+
+server.get('/', (req, res) => {
+    return res.send('Received a GET HTTP method');
 });
 
 // Define the `/nearest` endpoint for the backend API. It takes
