@@ -104,10 +104,6 @@ server.get("/quakes", function (req, res) {
         });
 });
 
-server.get('/', (req, res) => {
-    return res.send('Received a GET HTTP method');
-});
-
 // Define the `/nearest` endpoint for the backend API. It takes
 // two URL query parameters, representing the latitude and longitude
 // of a point. It will query the `quakes` table to find the closest
