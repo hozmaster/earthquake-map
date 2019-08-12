@@ -1,0 +1,7 @@
+{
+    "rdb" : {
+        "host" : "localhost",
+        "database" : "quakes",
+        "port" : 32769
+    }
+}
