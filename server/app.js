@@ -6,6 +6,8 @@ const cors = require("cors");
 
 const config = require("./data/config");
 
+console.log (config);
+
 let indexRouter = require('./routes/index');
 let usersRouter = require('./routes/users');
 
