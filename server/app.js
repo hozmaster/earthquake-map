@@ -3,14 +3,12 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const cors = require("cors");
 
 let indexRouter = require('./routes/index');
 // let quakesRouter = require('./routes/quakes');
 let usersRouter = require('./routes/users');
 
 let app = express();
-app.use (cors);
 
 app.set('view engine', 'ejs');
 
