@@ -12,9 +12,9 @@ class Quakes extends Component {
         this.state = {quakes: []};
     }
     componentDidMount() {
-        fetch('http://localhost:8090/quakes')
+        fetch('http://localhost:3007/quakes')
             .then(data => data.json())
-            .then((data) => { this.setState({ books: data }) });
+            .then((data) => { this.setState({ quakes: data }) });
     }
     render() {
         return < QuakeListing quakes={this.state.quakes} />;

@@ -6,7 +6,7 @@ import React from 'react';
 
 const QuakeListing = ({ quakes }) => {
     return <ul>
-        {quakes.map(quake => <li key={quake.id}>{quake.title}</li>)}
+        {quakes.map(quake => <li key={quake.id}> {quake.id}, {quake.type}</li>)}
     </ul>
 };
 

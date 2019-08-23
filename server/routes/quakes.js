@@ -70,8 +70,6 @@ r.connect(config.database).then(function (c) {
     });
 
 router.get("/", function (req, res, next) {
-    console.log ("connected");
-
     let conn;
     r.connect(config.database).then(function (c) {
         conn = c;
@@ -83,7 +81,6 @@ router.get("/", function (req, res, next) {
             return cursor.toArray();
         })
         .then(function (result) {
-            console.log(result);
             res.json(result);
         })
         .error(function (err) {
