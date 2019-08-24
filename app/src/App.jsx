@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2019.  Olli-Pekka Wallin All rights reserved
+*/
+
 import React, {Component} from 'react';
 import Map from './Components/Map';
 

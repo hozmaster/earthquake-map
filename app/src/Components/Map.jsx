@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2019.  Olli-Pekka Wallin All rights reserved
- */
+*/
 
 import React from 'react';
 import 'leaflet/dist/leaflet.css';
@@ -10,6 +10,7 @@ const style = {
     width: '100%',
     height: '100vh'
 };
+
 class Map extends React.Component {
     componentDidMount() {
         // create map
@@ -22,9 +23,7 @@ class Map extends React.Component {
                 }),
             ]
         });
-
         // this.marker = L.marker(this.props.markerPosition).addTo(this.map);
-
     }
 
     render() {
