@@ -4,7 +4,7 @@
 
 import * as L from "leaflet";
 
-let markerLayers = {};
+let QuakeLayer = {};
 
 
 // {
@@ -48,13 +48,16 @@ let markerLayers = {};
 //     "type": "Feature"
 // },
 
-markerLayers.OSM = L.LayerGroup.extend({
+QuakeLayer.OSM = L.LayerGroup.extend({
 
     options: {},
-    quekes: [],
+    
+    quakes: [],
 
     initialize: function initialize(options) {
-
+        const t_options = L.setOptions(this, options);
+        L.LayerGroup.prototype.initialize.call(this, t_options);
+        
     },
 
     appendMarker: function appnedMarker(quake) {
@@ -72,10 +75,18 @@ markerLayers.OSM = L.LayerGroup.extend({
             this.appendMarker(quake);
         });
     },
+
+    onAdd: function onAdd(map) {
+        L.LayerGroup.prototype.onAdd.call(this, map);
+    },
+
+    onRemove: function onRemove(map) {
+        L.LayerGroup.prototype.onRemove.call(this, map);
+    }
 });
 
-markerLayers.osm = function (opts) {
-    return new markerLayers.OSM(opts);
+QuakeLayer.osm = function (opts) {
+    return new QuakeLayer.OSM(opts);
 };
 
-export default markerLayers;
+export default QuakeLayer;
