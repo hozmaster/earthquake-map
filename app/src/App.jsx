@@ -14,7 +14,6 @@ class App extends React.Component {
                 <Map/>
             </div>
         );
-
     }
 }
 
