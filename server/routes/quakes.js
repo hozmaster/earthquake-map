@@ -5,7 +5,6 @@ const router = express.Router();
 const bluebird = require("bluebird");
 const config = require("./../data/config");
 
-
 const feedUrl = "earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_month.geojson";
 
 // Fetch data from the USGS earthquake feed and transform all
@@ -29,7 +28,7 @@ setInterval(function () {
     let conn;
     r.connect(config.database).then(function (c) {
         conn = c;
-        console.log("Refresh connect");
+        console.log("Refresh data");
 
         return bluebird.join(refresh.run(conn),
             r.table("quakes")
