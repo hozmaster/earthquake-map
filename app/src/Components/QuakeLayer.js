@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2019.  Olli-Pekka Wallin All rights reserved
  */
-
+import 'leaflet/dist/leaflet.css';
 import * as L from "leaflet";
 
 let QuakeLayer = {};
@@ -48,16 +48,26 @@ let QuakeLayer = {};
 //     "type": "Feature"
 // },
 
-QuakeLayer.OSM = L.LayerGroup.extend({
+QuakeLayer.OSM = L.TileLayer.extend({
 
-    options: {},
+    options: {
+        minZoom: 2,
+        maxZoom: 19,
+    },
     
-    quakes: [],
-
     initialize: function initialize(options) {
-        const t_options = L.setOptions(this, options);
-        L.LayerGroup.prototype.initialize.call(this, t_options);
-        
+        options = L.setOptions(this, options);
+
+        options.tileSize = 256;
+
+        const path =
+            "/{z}/{x}/{y}.png";
+        const tileServer = "{s}.tile.openstreetmap.org";
+        const tileUrl = "https://" + tileServer + path;
+
+        L.TileLayer.prototype.initialize.call(this, tileUrl, options);
+
+        this._attributionText = "";
     },
 
     appendMarker: function appnedMarker(quake) {
@@ -76,12 +86,34 @@ QuakeLayer.OSM = L.LayerGroup.extend({
         });
     },
 
+    onClick: function onClick (event) {
+        console.log (event);
+    },
+    
     onAdd: function onAdd(map) {
-        L.LayerGroup.prototype.onAdd.call(this, map);
+        L.TileLayer.prototype.onAdd.call(this, map);
+
+        const attributions = [
+            '<a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>'
+        ];
+        const attributionText = "© " + attributions.join(", ") + ". ";
+        if (attributionText !== this._attributionText) {
+            map.attributionControl.removeAttribution(this._attributionText);
+            map.attributionControl.addAttribution(
+                (this._attributionText = attributionText)
+            );
+        }
+
+        map.on('click', this.onClick);
+
     },
 
     onRemove: function onRemove(map) {
-        L.LayerGroup.prototype.onRemove.call(this, map);
+        L.TileLayer.prototype.onRemove.call(this, map);
+
+        L.TileLayer.prototype.onRemove.call(this, map);
+        this._map.attributionControl.removeAttribution(this._attributionText);
+        this._map.off("moveend zoomend resetview", this._findCopyrightBBox, this);
     }
 });
 

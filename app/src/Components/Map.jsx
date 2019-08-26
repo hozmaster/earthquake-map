@@ -12,17 +12,15 @@ const style = {
     height: '100vh'
 };
 
-let quakesLayer = QuakerLayer.osm ({});
-
+const quakesLayer = QuakerLayer.osm ({
+    scheme: 'reduced.day'
+});
 
 const mapParams = {
     center : [0.00, 0.00],
-    zoomControl: true,
+    zoomControl: false,
     zoom: 7,
     layers: [
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }),
         quakesLayer
     ]
 };
@@ -36,28 +34,39 @@ class Map extends React.Component {
 
     componentDidMount() {
 
-        const overlays = {
-            "quakes": quakesLayer
-        };
-
-        fetch('http://localhost:3007/quakes')
-            .then(data => data.json())
-            .then((data) => { this.setState({ quakes: data }) });
-
+        // fetch('http://localhost:3007/quakes')
+        //     .then(data => data.json())
+        //     .then((data) => { this.setState({ quakes: data }) });
+        
         // create map
         this.map = L.map('map',  mapParams);
 
-        // L.control.layers(quakesLayer).addTo(this.map);
+        const baseMaps = {
+            "Quakes": quakesLayer
+        };
+
+        L.control.layers(baseMaps).addTo(this.map);
         
         // quakes[i].marker = L.circleMarker(quakes[i].point, {
         //     radius: quakes[i].properties.mag * 2,
         //     fillColor: "#616161", color: "#616161"
         // });
 
+        // we do want a zoom control
+        L.control
+            .zoom({
+                position: 'topright'
+            })
+        .addTo(this.map);
+
+    }
+    
+    zoomin() {
+        this.map.zoomIn();
     }
 
     render() {
-        return <div id="map" style={style}/>
+        return <div id="map" style={style}> </div>
     }
 }
 
