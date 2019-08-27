@@ -5,7 +5,8 @@
 import React from 'react';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
-import QuakerLayer from "./QuakeLayer";
+import TileLayer from "./TileLayer";
+import quakeMarkerLayer from "./QuakeLayer"
 
 import quakesData from '../assets/quakes'
 
@@ -14,17 +15,14 @@ const style = {
     height: '100vh'
 };
 
-const quakesLayer = QuakerLayer.osm ({
-    scheme: 'reduced.day'
-});
+const baseMapLayer = TileLayer.osm ({ });
+const quakeLayer = quakeMarkerLayer.osm({});
 
 const mapParams = {
     center : [0.00, 0.00],
     zoomControl: false,
     zoom: 7,
-    layers: [
-        quakesLayer
-    ]
+    layers: [baseMapLayer, quakeLayer]
 };
 
 class Map extends React.Component {
@@ -39,15 +37,20 @@ class Map extends React.Component {
         // fetch('http://localhost:3007/quakes')
         //     .then(data => data.json())
         //     .then((data) => { this.setState({ quakes: data }) });
-        
-        // create map
-        this.map = L.map('map',  mapParams);
 
+        // create map
+        this.map = L.map('map', mapParams);
+
+        // to be ability disable/enable control
         const baseMaps = {
-            "Quakes": quakesLayer
+            'map': baseMapLayer
         };
 
-        L.control.layers(baseMaps).addTo(this.map);
+        const overlayMaps = {
+            "Quakes 4+": quakeLayer
+        };
+
+        L.control.layers(baseMaps,overlayMaps).addTo(this.map);
 
         quakesData.forEach (function (quake, index) {
             console.log (quake);

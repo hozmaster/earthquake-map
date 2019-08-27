@@ -3,10 +3,11 @@
  */
 import 'leaflet/dist/leaflet.css';
 import * as L from "leaflet";
+import {TileLayer} from "leaflet/dist/leaflet-src.esm";
 
-let QuakeLayer = {};
+let tileMapLayer = {};
 
-QuakeLayer.OSM = L.TileLayer.extend({
+tileMapLayer.OSM = L.TileLayer.extend({
 
     options: {
         minZoom: 2,
@@ -78,8 +79,8 @@ QuakeLayer.OSM = L.TileLayer.extend({
     }
 });
 
-QuakeLayer.osm = function (opts) {
-    return new QuakeLayer.OSM(opts);
+TileLayer.osm = function (opts) {
+    return new tileMapLayer.OSM(opts);
 };
 
-export default QuakeLayer;
+export default TileLayer;
