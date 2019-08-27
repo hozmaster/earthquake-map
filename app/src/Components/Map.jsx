@@ -7,6 +7,8 @@ import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import QuakerLayer from "./QuakeLayer";
 
+import quakesData from '../assets/quakes'
+
 const style = {
     width: '100%',
     height: '100vh'
@@ -46,11 +48,10 @@ class Map extends React.Component {
         };
 
         L.control.layers(baseMaps).addTo(this.map);
-        
-        // quakes[i].marker = L.circleMarker(quakes[i].point, {
-        //     radius: quakes[i].properties.mag * 2,
-        //     fillColor: "#616161", color: "#616161"
-        // });
+
+        quakesData.forEach (function (quake, index) {
+            console.log (quake);
+        });
 
         // we do want a zoom control
         L.control
@@ -61,10 +62,6 @@ class Map extends React.Component {
 
     }
     
-    zoomin() {
-        this.map.zoomIn();
-    }
-
     render() {
         return <div id="map" style={style}> </div>
     }
