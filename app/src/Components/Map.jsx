@@ -52,16 +52,14 @@ class Map extends React.Component {
 
         L.control.layers(baseMaps,overlayMaps).addTo(this.map);
 
-        quakesData.forEach (function (quake, index) {
-            console.log (quake);
-        });
-
         // we do want a zoom control
         L.control
             .zoom({
                 position: 'topright'
             })
         .addTo(this.map);
+
+        quakeLayer.insertMarker(quakesData[0]);
 
     }
     

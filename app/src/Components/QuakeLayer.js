@@ -12,7 +12,7 @@ quakeMarkerLayer.OSM = L.LayerGroup.extend({
 
     options: {},
 
-    quake_markers: [],
+    markers: [],
 
     initialize: function initialize(options) {
 
@@ -27,7 +27,24 @@ quakeMarkerLayer.OSM = L.LayerGroup.extend({
 
     onRemove: function onRemove(map) {
         L.LayerGroup.prototype.onRemove.call(this, map);
-    }
+    },
+
+    insertMarker: function insertMarker(quake) {
+
+        quake.point = L.latLng(
+            quake.geometry.coordinates[1],
+            quake.geometry.coordinates[0]);
+
+        let marker = L.circleMarker(quake.point, {
+            radius: quake.properties.mag * 2,
+            fillColor: "#616161", color: "#616161"
+        });
+
+        this.addLayer(marker);
+        quake.marker_id = this.getLayerId(marker);
+        this.markers.push(quake);
+
+     }
 
 });
 
