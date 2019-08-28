@@ -24,7 +24,7 @@ class Control extends React.Component {
     render() {
         return (
             <div>
-                <Segment style={segmentStyle}>
+                <Segment floated='left' style={segmentStyle}>
                 <div>
                     <span>
                       <strong>  Quakes monitor  </strong>
