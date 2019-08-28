@@ -4,11 +4,13 @@
 
 import React from 'react';
 import 'leaflet/dist/leaflet.css';
+
 import L from 'leaflet';
 import TileLayer from "./TileLayer";
 import quakeMarkerLayer from "./QuakeLayer"
 
 import quakesData from '../assets/quakes'
+import {Container} from "semantic-ui-react";
 
 const style = {
     width: '100%',
@@ -64,7 +66,11 @@ class Map extends React.Component {
     }
     
     render() {
-        return <div id="map" style={style}> </div>
+        return(
+            <div>
+                <div id="map" style={style}> </div>
+            </div>
+        )
     }
 }
 
