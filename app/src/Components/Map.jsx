@@ -52,7 +52,7 @@ class Map extends React.Component {
             "Quakes 4+": quakeLayer
         };
 
-        L.control.layers(baseMaps,overlayMaps).addTo(this.map);
+        // L.control.layers(baseMaps,overlayMaps).addTo(this.map);
 
         // we do want a zoom control
         L.control
