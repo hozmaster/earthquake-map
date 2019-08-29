@@ -5,6 +5,8 @@ import React from "react"
 
 import {
     Segment,
+    Item,
+    ItemImage,
     Divider,
 } from "semantic-ui-react"
 
@@ -25,11 +27,113 @@ class Control extends React.Component {
         return (
             <div>
                 <Segment floated='left' style={segmentStyle}>
-                <div>
+                    <div>
                     <span>
-                      <strong>  Quakes monitor  </strong>
+                        <strong>  Quakes Monitor  </strong>
                     </span>
-                </div>
+                        <Divider/>
+                    </div>
+                    <Item.Group divided={true}>
+                        <Item>
+                            <Item.Content>
+                                <Item.Header as='a'>Header</Item.Header>
+                                <Item.Meta>Description</Item.Meta>
+                                <Item.Extra>Additional Details</Item.Extra>
+                            </Item.Content>
+                        </Item>
+                        <Item>
+                            <Item.Content>
+                                <Item.Header as='a'>Header</Item.Header>
+                                <Item.Meta>Description</Item.Meta>
+                                <Item.Extra>Additional Details</Item.Extra>
+                            </Item.Content>
+                        </Item>
+                        <Item>
+                            <Item.Content>
+                                <Item.Header as='a'>Header</Item.Header>
+                                <Item.Meta>Description</Item.Meta>
+                                <Item.Extra>Additional Details</Item.Extra>
+                            </Item.Content>
+                        </Item>
+                        <Item>
+                            <Item.Content>
+                                <Item.Header as='a'>Header</Item.Header>
+                                <Item.Meta>Description</Item.Meta>
+                                <Item.Extra>Additional Details</Item.Extra>
+                            </Item.Content>
+                        </Item>
+                        <Item>
+                            <Item.Content>
+                                <Item.Header as='a'>Header</Item.Header>
+                                <Item.Meta>Description</Item.Meta>
+                                <Item.Extra>Additional Details</Item.Extra>
+                            </Item.Content>
+                        </Item>
+                        <Item>
+                            <Item.Content>
+                                <Item.Header as='a'>Header</Item.Header>
+                                <Item.Meta>Description</Item.Meta>
+                                <Item.Extra>Additional Details</Item.Extra>
+                            </Item.Content>
+                        </Item>
+                        <Item>
+                            <Item.Content>
+                                <Item.Header as='a'>Header</Item.Header>
+                                <Item.Meta>Description</Item.Meta>
+                                <Item.Extra>Additional Details</Item.Extra>
+                            </Item.Content>
+                        </Item>
+                        <Item>
+                            <Item.Content>
+                                <Item.Header as='a'>Header</Item.Header>
+                                <Item.Meta>Description</Item.Meta>
+                                <Item.Extra>Additional Details</Item.Extra>
+                            </Item.Content>
+                        </Item>
+                        <Item>
+                            <Item.Content>
+                                <Item.Header as='a'>Header</Item.Header>
+                                <Item.Meta>Description</Item.Meta>
+                                <Item.Extra>Additional Details</Item.Extra>
+                            </Item.Content>
+                        </Item>
+                        <Item>
+                            <Item.Content>
+                                <Item.Header as='a'>Header</Item.Header>
+                                <Item.Meta>Description</Item.Meta>
+                                <Item.Extra>Additional Details</Item.Extra>
+                            </Item.Content>
+                        </Item>
+                        <Item>
+                            <Item.Content>
+                                <Item.Header as='a'>Header</Item.Header>
+                                <Item.Meta>Description</Item.Meta>
+                                <Item.Extra>Additional Details</Item.Extra>
+                            </Item.Content>
+                        </Item>
+                        <Item>
+                            <Item.Content>
+                                <Item.Header as='a'>Header</Item.Header>
+                                <Item.Meta>Description</Item.Meta>
+                                <Item.Extra>Additional Details</Item.Extra>
+                            </Item.Content>
+                        </Item>
+                        <Item>
+                            <Item.Content>
+                                <Item.Header as='a'>Header</Item.Header>
+                                <Item.Meta>Description</Item.Meta>
+                                <Item.Extra>Additional Details</Item.Extra>
+                            </Item.Content>
+                        </Item>
+                        <Item>
+                            <Item.Content>
+                                <Item.Header as='a'>Header</Item.Header>
+                                <Item.Meta>Description</Item.Meta>
+                                <Item.Extra>Additional Details</Item.Extra>
+                            </Item.Content>
+                        </Item>
+                    </Item.Group>
+
                 </Segment>
             </div>
         )
