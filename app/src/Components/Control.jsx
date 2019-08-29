@@ -26,7 +26,7 @@ class Control extends React.Component {
     render() {
         return (
             <div>
-                <Segment floated='left' style={segmentStyle}>
+                <Segment floated='left' style={segmentStyle} raised='true' >
                     <div>
                     <span>
                         <strong>  Quakes Monitor  </strong>
@@ -133,7 +133,6 @@ class Control extends React.Component {
                             </Item.Content>
                         </Item>
                     </Item.Group>
-
                 </Segment>
             </div>
         )
