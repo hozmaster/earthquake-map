@@ -23,10 +23,22 @@ const segmentStyle = {
 };
 
 class Control extends React.Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            quakes: props.quakes,
+        };
+
+        console.log(this.state);
+
+    }
+
     render() {
         return (
             <div>
-                <Segment floated='left' style={segmentStyle} raised='true' >
+                <Segment floated='left' style={segmentStyle}  >
                     <div>
                     <span>
                         <strong>  Quakes Monitor  </strong>
@@ -34,104 +46,18 @@ class Control extends React.Component {
                         <Divider/>
                     </div>
                     <Item.Group divided={true}>
-                        <Item>
-                            <Item.Content>
-                                <Item.Header as='a'>Header</Item.Header>
-                                <Item.Meta>Description</Item.Meta>
-                                <Item.Extra>Additional Details</Item.Extra>
-                            </Item.Content>
-                        </Item>
-                        <Item>
-                            <Item.Content>
-                                <Item.Header as='a'>Header</Item.Header>
-                                <Item.Meta>Description</Item.Meta>
-                                <Item.Extra>Additional Details</Item.Extra>
-                            </Item.Content>
-                        </Item>
-                        <Item>
-                            <Item.Content>
-                                <Item.Header as='a'>Header</Item.Header>
-                                <Item.Meta>Description</Item.Meta>
-                                <Item.Extra>Additional Details</Item.Extra>
-                            </Item.Content>
-                        </Item>
-                        <Item>
-                            <Item.Content>
-                                <Item.Header as='a'>Header</Item.Header>
-                                <Item.Meta>Description</Item.Meta>
-                                <Item.Extra>Additional Details</Item.Extra>
-                            </Item.Content>
-                        </Item>
-                        <Item>
-                            <Item.Content>
-                                <Item.Header as='a'>Header</Item.Header>
-                                <Item.Meta>Description</Item.Meta>
-                                <Item.Extra>Additional Details</Item.Extra>
-                            </Item.Content>
-                        </Item>
-                        <Item>
-                            <Item.Content>
-                                <Item.Header as='a'>Header</Item.Header>
-                                <Item.Meta>Description</Item.Meta>
-                                <Item.Extra>Additional Details</Item.Extra>
-                            </Item.Content>
-                        </Item>
-                        <Item>
-                            <Item.Content>
-                                <Item.Header as='a'>Header</Item.Header>
-                                <Item.Meta>Description</Item.Meta>
-                                <Item.Extra>Additional Details</Item.Extra>
-                            </Item.Content>
-                        </Item>
-                        <Item>
-                            <Item.Content>
-                                <Item.Header as='a'>Header</Item.Header>
-                                <Item.Meta>Description</Item.Meta>
-                                <Item.Extra>Additional Details</Item.Extra>
-                            </Item.Content>
-                        </Item>
-                        <Item>
-                            <Item.Content>
-                                <Item.Header as='a'>Header</Item.Header>
-                                <Item.Meta>Description</Item.Meta>
-                                <Item.Extra>Additional Details</Item.Extra>
-                            </Item.Content>
-                        </Item>
-                        <Item>
-                            <Item.Content>
-                                <Item.Header as='a'>Header</Item.Header>
-                                <Item.Meta>Description</Item.Meta>
-                                <Item.Extra>Additional Details</Item.Extra>
-                            </Item.Content>
-                        </Item>
-                        <Item>
-                            <Item.Content>
-                                <Item.Header as='a'>Header</Item.Header>
-                                <Item.Meta>Description</Item.Meta>
-                                <Item.Extra>Additional Details</Item.Extra>
-                            </Item.Content>
-                        </Item>
-                        <Item>
-                            <Item.Content>
-                                <Item.Header as='a'>Header</Item.Header>
-                                <Item.Meta>Description</Item.Meta>
-                                <Item.Extra>Additional Details</Item.Extra>
-                            </Item.Content>
-                        </Item>
-                        <Item>
-                            <Item.Content>
-                                <Item.Header as='a'>Header</Item.Header>
-                                <Item.Meta>Description</Item.Meta>
-                                <Item.Extra>Additional Details</Item.Extra>
-                            </Item.Content>
-                        </Item>
-                        <Item>
-                            <Item.Content>
-                                <Item.Header as='a'>Header</Item.Header>
-                                <Item.Meta>Description</Item.Meta>
-                                <Item.Extra>Additional Details</Item.Extra>
-                            </Item.Content>
-                        </Item>
+
+                        { this.state.quakes.map((quake,key) =>
+                            <Item key={quake.id}>
+                                <Item.Content>
+                                    <Item.Header >{quake.properties.title}</Item.Header>
+                                    <Item.Meta>Type : {quake.properties.type}</Item.Meta>
+                                    <Item.Meta>Magnitude : {quake.properties.mag}</Item.Meta>
+                                    <Item.Extra as='a' onClick={(quake.properties.details)}> Link</Item.Extra>
+                                </Item.Content>
+                            </Item>)
+                        }
+
                     </Item.Group>
                 </Segment>
             </div>

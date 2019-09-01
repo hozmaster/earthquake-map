@@ -7,13 +7,25 @@ import Map from './Components/Map';
 
 import './App.css';
 import Control from "./Components/Control";
+import quakesData from './assets/quakes';
+
 
 class App extends React.Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            quakes: quakesData
+        };
+
+    }
+
     render () {
         return (
             <div>
                 <Map/>
-                <Control/>
+                <Control quakes = {this.state.quakes}/>
             </div>
         );
     }
