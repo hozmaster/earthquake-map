@@ -9,7 +9,7 @@ import {
     ADD_NOTE
 } from '../actions/actions'
 
-function operations(state = [], action) {
+function quakesOps(state = [], action) {
     switch (action.type) {
         case GET_QUAKES:
             return [
@@ -35,7 +35,7 @@ function operations(state = [], action) {
 
 
 const quakesApp = combineReducers({
-    operations
+    quakesOps
 });
 
 export default quakesApp
