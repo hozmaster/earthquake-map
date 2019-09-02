@@ -31,8 +31,6 @@ class Control extends React.Component {
             quakes: props.quakes,
         };
 
-        console.log(this.state);
-
     }
 
     render() {
