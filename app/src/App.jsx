@@ -9,7 +9,6 @@ import './App.css';
 import Control from "./Components/Control";
 import quakesData from './assets/quakes';
 
-
 class App extends React.Component {
 
     constructor(props) {
@@ -18,9 +17,8 @@ class App extends React.Component {
         this.state = {
             quakes: quakesData
         };
-
     }
-
+    
     render () {
         return (
             <div>

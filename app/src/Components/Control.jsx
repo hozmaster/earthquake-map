@@ -2,6 +2,8 @@
  * Copyright (c) 2019.  Olli-Pekka Wallin All rights reserved
  */
 import React from "react"
+import PropTypes from 'prop-types'
+
 
 import {
     Segment,
@@ -30,7 +32,6 @@ class Control extends React.Component {
         this.state = {
             quakes: props.quakes,
         };
-
     }
 
     render() {

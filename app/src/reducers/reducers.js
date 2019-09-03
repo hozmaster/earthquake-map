@@ -1,15 +1,22 @@
 /*
  * Copyright (c) 2019.  Olli-Pekka Wallin All rights reserved
- */
+*/
+
+import quakesData from './../assets/quakes';
 
 import { combineReducers } from 'redux'
 
 import {
     GET_QUAKES,
-    ADD_NOTE
+    ADD_NOTE, FETCH_QUAKES
 } from '../actions/actions'
 
-function quakesOps(state = [], action) {
+const initialState = {
+    quakes: quakesData
+};
+
+function quakesOps(state = initialState, action) {
+
     switch (action.type) {
         case GET_QUAKES:
             return [
@@ -19,6 +26,12 @@ function quakesOps(state = [], action) {
                     completed: false
                 }
             ]
+        case FETCH_QUAKES:
+            return {
+                ...state,
+                quakesResults: action.results,
+                isFetching: false
+            }
         case ADD_NOTE:
             return [
                 ...state,
@@ -27,7 +40,6 @@ function quakesOps(state = [], action) {
                     completed: false
                 }
             ]
-
         default:
             return state
     }
