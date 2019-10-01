@@ -8,6 +8,7 @@ import { createStore } from 'redux'
 import quakesApp from "./reducers/reducers";
 
 import  {
+    getQuakes,
     addNote
 } from "./actions/actions";
 

@@ -8,7 +8,8 @@ import { combineReducers } from 'redux'
 
 import {
     GET_QUAKES,
-    ADD_NOTE, FETCH_QUAKES
+    FETCH_QUAKES,
+    ADD_NOTE,
 } from '../actions/actions'
 
 const initialState = {
@@ -32,14 +33,14 @@ function quakesOps(state = initialState, action) {
                 quakesResults: action.results,
                 isFetching: false
             }
-        case ADD_NOTE:
-            return [
-                ...state,
-                {
-                    text: action.text,
-                    completed: false
-                }
-            ]
+        // case ADD_NOTE:
+        //     return [
+        //         ...state,
+        //         {
+        //             text: action.text,
+        //             completed: false
+        //         }
+        //     ]
         default:
             return state
     }

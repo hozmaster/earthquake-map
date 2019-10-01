@@ -4,7 +4,6 @@
 import React from "react"
 import PropTypes from 'prop-types'
 
-
 import {
     Segment,
     Item,
@@ -34,6 +33,10 @@ class Control extends React.Component {
         };
     }
 
+    panToMapPos(quake) {
+        console.log (quake);
+    }
+
     render() {
         return (
             <div>
@@ -48,7 +51,7 @@ class Control extends React.Component {
 
                         { this.state.quakes.map((quake,key) =>
                             <Item key={quake.id}>
-                                <Item.Content>
+                                <Item.Content onClick={() => this.panToMapPos(quake)}>
                                     <Item.Header >{quake.properties.title}</Item.Header>
                                     <Item.Meta>Type : {quake.properties.type}</Item.Meta>
                                     <Item.Meta>Magnitude : {quake.properties.mag}</Item.Meta>

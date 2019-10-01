@@ -17,7 +17,6 @@ export const fetch_quakes = payload => ({
     ...payload
 })
 
-
 export function addNote(text) {
     return { type: ADD_NOTE, text }
 }
