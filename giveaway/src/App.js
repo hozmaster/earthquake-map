@@ -1,36 +1,51 @@
 
 import React, {Component} from 'react';
 import './App.css';
-import {Map, TileLayer, Marker, Popup} from "react-leaflet";
+import {Map, Marker, Popup} from "react-leaflet";
+import BaseLayer from "./Components/BaseLayer";
 
-type
-State = {
-    lat: number,
-    lng: number,
-    zoom: number,
-}
+// type
+// State = {
+//     lat: number,
+//     lng: number,
+//     zoom: number,
+// }
 
 const style = {
     width: '100%',
     height: '100vh'
 };
 
-export default class App extends Component<{}, State> {
+//
+// const outer = [
+//     [50.505, -29.09],
+//     [52.505, 29.09],
+// ]
+// const inner = [
+//     [49.505, -2.09],
+//     [53.505, 2.09],
+// ]
+
+export default class App extends Component {
     state = {
         lat: 51.505,
         lng: -0.09,
         zoom: 13,
+        render: true
     }
-    
+
+
+    componentDidMount() {
+    }
+
+    componentWillUnmount() {
+    }
+
     render() {
         const position = [this.state.lat, this.state.lng]
         return (
-
             <Map center={position} zoom={this.state.zoom} style={style}>
-                <TileLayer
-                    attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
+                <BaseLayer/>
                 <Marker position={position}>
                     <Popup>
                         A pretty CSS3 popup. <br/> Easily customizable.
